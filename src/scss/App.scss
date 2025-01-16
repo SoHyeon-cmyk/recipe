@@ -1,105 +1,168 @@
-@import './init.scss';
-
-
+//메뉴
 .nav {
-  border-bottom: 1px solid #ddd;
-  padding: 15px 20px;
-
+  position: absolute;
   .inner {
-    .menu {
-      display: flex;
-      justify-content: center;
-
-      li {
-        a {
-          padding: 10px 20px;
-        }
-      }
-    }
-  }
-}
-
-.home{
-  margin-top: 30px;
-  .swiperMain{
-  width: 100%;
-  height: 600px;
-  object-fit: cover;
-    img{
+    position: fixed;
+    width: 74px;
+    height: 100%;
+    background: #fff8e1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: 1px solid #dad3bc52;
+    z-index: 99;
+    ul.menu {
       width: 100%;
-      height: 500px
-    }
-  }
-  .title{
-    margin-top: 20px;
-    h2{text-align: center;
-      .homeList{
-        max-width:1200px;
-        width: 100%;
-        padding: 20px;
-        margin: 0 auto;
-        position: relative;
-        .list{
-          .item{
-            width: 100%;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      li {
+        text-indent: 1.5em;
+        line-height: 5.8em;
+        font-size: 15px;
+        a {
+          display: block;
+          text-decoration: none;
+          color: #222;
+          :nth-child(1) {
+            font-size: 25px;
           }
         }
       }
     }
   }
-  .swiper_btn{
-    .swiperPrevBtn{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 30px;
-      z-index: 100;
+}
+
+//Home
+.home {
+  margin-left: 74px;
+  background-color: #fff8e1;
+  padding: 100px;
+  .swiperMain {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    .swiperSlide {
+      a {
+        width: 100%;
+        display: flex;
+        img {
+          height: 500px;
+          overflow: hidden;
+          border-radius: 10px;
+        }
+        .text {
+          margin-left: 30px;
+          color: #333;
+          > .title {
+            font-size: 30px;
+            color: #ff4e6b;
+          }
+          .material {
+            margin: 10px 0;
+            width: 85%;
+            font-size: 16px;
+            font-weight: lighter;
+          }
+          > .recipe {
+            font-size: 16px;
+            margin: 10px 0;
+          }
+        }
+      }
     }
-    .swiperNextBtn{
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      right: 30px;
-      z-index: 100;
+  }
+  .title {
+    margin-top: 60px;
+    h2 {
+      text-align: left;
+      font-size: 40px;
+      color: #222;
+    }
+  }
+  .homeList {
+    max-width: 1600px;
+    width: 100%;
+    padding: 20px 0;
+    position: relative;
+    .swiper {
+      height: 100%;
+      .list {
+        width: 100%;
+        .item {
+          width: 100%;
+          height: fit-content;
+          user-select: none;
+          a {
+            > .item-img {
+              > img {
+                border-radius: 8px;
+              }
+            }
+            > .item-text-wrap {
+            }
+          }
+        }
+      }
+      .swiper-scrollbar {
+        background-color: #ccc; /* 스크롤바 배경색 */
+        height: 5px; /* 스크롤바 높이 */
+        .swiper-scrollbar-drag {
+          background-color: #ff4e6b; /* 드래그 핸들의 색상 */
+        }
+      }
     }
   }
 }
-
-
-
+//List
 .list {
-  display: flex;
   padding: 20px;
-
+  display: flex;
+  flex-wrap: wrap;
   .item {
-    width: 25%;
+    width: 20%;
     padding: 10px;
-    a {
-      .item-img {
+    .item-img {
+      width: 100%;
+      position: relative;
+      // 정사각형으로 만들기 위한 css
+      &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 10px;
+      }
+    }
+    .list-text-wrap {
+      margin-top: 15px;
+      .list-txt-title {
+        font-size: 16px;
         overflow: hidden;
-
-        img {
-          width: 100%;
-          object-fit: cover;
-        }
-
-        .list-text-wrap {
-          .list-txt-title {
-            font-size: 14px;
-            overflow: hidden;
-            white-space: nowrap;
+        text-overflow: ellipsis; //...
+        white-space: nowrap;
+      }
+      .list-sub-txt-wrap {
+        color: #666;
+        font-size: 13px;
+        .list-txt-kcal {
+          margin: 5px 0;
+          .kcalIcon {
+            color: #444;
+            margin-right: 5px;
           }
-
-          .list-sub-txt-wrap {
-            .list-txt-kal {
-              color: #666;
-              font-size: 12px;
-              margin-bottom: 5px;
-            }
-
-            .list-txt-way {
-              font-size: 15px;
-            }
+        }
+        .list-txt-way {
+          .cookIcon {
+            color: #444;
+            margin-right: 5px;
           }
         }
       }
@@ -108,154 +171,154 @@
 }
 
 .category {
-  padding: 20px;
-
+  padding: 100px 20px;
+  margin-left: 74px;
+  background-color: #fff8e1;
   h2 {
-    text-align: center;
-    font-size: 24px;
+    padding: 0 30px;
+    text-align: left;
+    font-size: 30px;
+    color: #222;
   }
 }
 
 .recipeDetail {
-  width: 50vw;
-  padding: 2vw;
-  margin: 2rem auto 20rem;
-
+  padding: 100px 20px;
+  margin-left: 74px;
+  display: flex;
+  font-size: 14px;
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+    align-items: center;
+  }
   img {
-    width: 100%;
-    height: 50rem;
-    object-fit: cover;
-  }
-
-  .recipeDetailTitle {
-    text-align: center;
-    margin: 20px auto;
-    color: #666;
-    font-size: 2rem;
-  }
-
-  .detail {
-    width: 100%;
-    padding: 1vw;
-    margin-bottom: 1vw;
-
-  }
-
-  .recipeDetaiInfo {
-    width: 100%;
-    padding: 1vw;
-    margin-bottom: 1vw;
-
-    .info-title {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      position: relative;
-      padding-left: 30px;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        background-color: #f00;
-      }
+    width: auto;
+    height: 70%;
+    margin-right: 20px;
+    @media screen and (max-width: 780px) {
+      width: 45%;
     }
-
-    .txt {
-      font-size: .9rem;
-      line-height: 1.3;
-
-      .source-tit {
-        display: block;
-      }
-
-      .source-con {}
+    @media screen and (max-width: 540px) {
+      width: 80%;
+      margin-bottom: 10px;
     }
   }
-
-  .recipeDetaiInfo1 {
-    width: 100%;
-    padding: 1vw;
-    margin-bottom: 1vw;
-
-    .info-title1 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      position: relative;
-      padding-left: 30px;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        background-color: #f00;
-      }
+  > div {
+    padding: 3px 0;
+    .recipeDetailTitle {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff4e6b;
     }
-
-    .desc_list {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: auto;
-      margin-bottom: 1rem;
-      grid-column-gap: 10px;
-      .desc_txt {
-        font-size: .9rem;
-
-      }
-      img {}
-    }
-  }
-
-  .recipeDetaiInfo2 {
-    width: 100%;
-    padding: 1vw;
-    .info-title2 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        position: relative;
-        padding-left: 30px;
-  
+    .recipeDetailInfo {
+      margin-top: 10px;
+      .info-title {
+        font-weight: 600;
+        margin-bottom: 5px;
         &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 20px;
-          height: 20px;
-          background-color: #f00;
+          content: "● ";
+          font-size: 12px;
         }
+      }
+      .txt {
+        display: block;
+        font-size: 13px;
+        color: #222;
+        line-height: 18px;
+        .source-tit {
+        }
+        .source-con {
+        }
+      }
     }
-
-    .table {
-      display: flex;
-      flex-direction: column;
-      color: #666;
-      justify-content: center;
-      .row {
+    .recipeDetailInfo1 {
+      margin: 10px 0;
+      .info-title1 {
+        font-weight: 600;
+        margin-bottom: 5px;
+        &::before {
+          content: "● ";
+          font-size: 12px;
+        }
+      }
+      .desc_list {
         display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-        flex-direction: row;
-        height: 2rem;
-        .col {
-          &:first-child{
-            width: 5rem;
-            display: inline-block;
-            text-align: justify;
-            max-width: 20rem;
-            min-width: 10%;
-            font-weight: 700;
-            margin-top: 2rem;
-            color: #7777;
-
+        font-size: 13px;
+        color: #222;
+        width: 100%;
+        position: relative;
+        margin-bottom: 10px;
+        &::after {
+          content: "";
+          display: block;
+          padding-bottom: 15%;
+          @media screen and (max-width: 540px) {
+            content: "";
+            display: block;
+            padding-bottom: 30px;
           }
         }
-        .tip {}
+        img {
+          width: 20%;
+          height: auto;
+          position: absolute;
+          @media screen and (max-width: 780px) {
+            display: none;
+          }
+        }
+        .desc-txt {
+          position: absolute;
+          width: 50%;
+          line-height: 18px;
+          @media screen and (max-width: 780px) {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .recipeDetailInfo2 {
+      .info-title2 {
+        font-weight: 600;
+        margin-bottom: 10px;
+        &::before {
+          content: "● ";
+          font-size: 12px;
+        }
+      }
+      .table {
+        padding: none;
+        display: flex;
+        .row-left{
+          width: 10%;
+        }
+        .row-right{
+          width: 50%;
+        }
+        .row {
+          display: block;
+          font-size: 13px;
+          color: #222;
+          margin-bottom: 5px;
+          .col {
+            font-weight: 500;
+          }
+          .col_info {
+            font-weight: 400;
+          }
+        }
+      }
+      .tip {
+        display: block;
+        font-size: 13px;
+        color: #222;
+        width: 6  0%;
+        .col {
+          font-weight: 500;
+        }
+        .col_info {
+          font-weight: 400;
+          line-height: 18px;
+        }
       }
     }
   }

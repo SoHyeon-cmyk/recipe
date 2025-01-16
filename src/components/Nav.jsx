@@ -1,36 +1,50 @@
-import React, { useContext } from 'react'; //상위컴포넌트에서 props 내려받기
-import { DataContext } from '../App';
-import { NavLink } from 'react-router-dom';
+import React, { useContext } from "react";
+import { DataContext } from "../App";
+import { NavLink } from "react-router-dom";
+import { GiCook } from "react-icons/gi";
+import { TbCookieManFilled } from "react-icons/tb";
+import { PiCookingPotFill } from "react-icons/pi";
+import { FaCookieBite } from "react-icons/fa";
+import { GiFishCooked } from "react-icons/gi";
+import { IoSearch } from "react-icons/io5";
 
 const Nav = () => {
-  const {data,loading} = useContext(DataContext)
+  const { data, loading } = useContext(DataContext);
 
-  if(loading){
-    return <h1 className='loading'>데이터 로딩 중</h1>
+  if (loading) {
+    return <h1 className="loading">데이터 로딩 중입니다.</h1>;
   }
-  const categories = [...new Set(data.map((item)=>item.RCP_PAR2))]//중복값 제외, 고유 값은 set 객체로 생성
-  //새로운 배열로 만들어 categoies변수에 반환
+
+  const categories = [...new Set(data.map((item) => item.RCP_PAT2))];
 
   const activeStyle = {
-    color:'#f00',
-    textShadow:'2px 2px 5px #000'
-  }
-
+    color: "#ff4e6b"
+  };
   return (
-    <div className='nav'>
+    <div className="nav">
       <div className="inner">
         <ul className="menu">
           <li>
-          <NavLink to='' style={({isActive})=>(isActive ? activeStyle : undefined)}>All</NavLink>
+            <NavLink
+              to="/"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+            <GiCook />
+            </NavLink>
           </li>
-            {
-              categories.map((category)=>(
-                <li key={category.RCP_SEQ}>
-                  <NavLink to={`category/${category}`} style={({isActive})=>(isActive ? activeStyle : undefined)}>{category}</NavLink>
-                </li>
-              ))
-            }
-
+          {categories.map((category) => (
+            <li key={category.RCP_SEQ}>
+              <NavLink
+                to={`category/${category}`}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
+                {category === "반찬" && <TbCookieManFilled />}
+                {category === "국&찌개" && <PiCookingPotFill />}
+                {category === "후식" && <FaCookieBite />}
+                {category === "일품" && <GiFishCooked />}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
